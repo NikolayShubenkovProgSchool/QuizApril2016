@@ -13,7 +13,11 @@ struct Question {
     let question:String
     let answers:[String]
     let correctAnswer:String
-    let imageName:String
+    private let imageName:String
+    var image:UIImage? {
+        return UIImage(named: imageName)
+    }
+    
     
     init(json:[String:AnyObject]) {
         

@@ -9,7 +9,22 @@
 import UIKit
 
 class QuiestionViewController: UIViewController {
-
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var questionList:[Question]? {
+        didSet {
+            currentQuestion = questionList?.first
+        }
+    }
+    var currentQuestion:Question? {
+        didSet {
+            updateViews()
+        }
+    }
+    
     //вызывается в момент, когда контроллер загрузил View. В этот момент лучше всего
     //начать загрузку данных для отображения
     override func viewDidLoad() {
@@ -46,16 +61,37 @@ class QuiestionViewController: UIViewController {
                 return
         }
         
-        let questionModels  = questionsToParse.map { json -> Question in
+        let questionModels  = questionsToParse.map { element -> Question in
             
-            let parsedModel = Question(json: json)
+            let parsedModel = Question(json: element)
             return parsedModel
         }
         
         print("Похоже, что мы смогли получить модель!!! ИХААА!!\n\(questionModels)")
+        questionList = questionModels
+    }
+    
+    func updateViews(){
+        let image = currentQuestion?.image
+        imageView.image = image
+        
+        label.text = currentQuestion?.question
+        
+        
         
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
