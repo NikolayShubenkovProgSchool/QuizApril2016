@@ -36,5 +36,27 @@ class QuiestionViewController: UIViewController {
         let json = try! NSJSONSerialization.JSONObjectWithData(data, options: [])
         
         print("содержимое викторины:\(json)")
+
+        //попробуем представить json как коллекцию вида Строка -> любой объект
+        guard let questionJSON = json as? [String:AnyObject],
+            //если повезет, то считаем из questionJSON содержимое и
+            //если это окажется массив, в котором лежат Коллекции вида String:Anyobject, то будем счастливы
+              let questionsToParse = questionJSON["questions"] as? [ [String:AnyObject] ] else {
+                print("fail to load dataModel")
+                return
+        }
+        
+        let questionModels  = questionsToParse.map { json -> Question in
+            
+            let parsedModel = Question(json: json)
+            return parsedModel
+        }
+        
+        print("Похоже, что мы смогли получить модель!!! ИХААА!!\n\(questionModels)")
+        
     }
 }
+
+
+
+
