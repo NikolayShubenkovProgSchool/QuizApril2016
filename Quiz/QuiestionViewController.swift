@@ -27,12 +27,18 @@ class QuiestionViewController: UIViewController {
     var answers:[String]? {
         return currentQuestion?.answers
     }
+    var totalPoints = 0
+    var currentQuestionIndex = 0
     
     //вызывается в момент, когда контроллер загрузил View. В этот момент лучше всего
     //начать загрузку данных для отображения
     override func viewDidLoad() {
         super.viewDidLoad()
+        //отвечает за то, как и что показывать
         tableView.dataSource = self
+        
+        //отвечает за то, что делать, при возникновении различных событий 
+        tableView.delegate = self
         
         loadData()
         // Do any additional setup after loading the view.
@@ -103,14 +109,37 @@ extension QuiestionViewController:UITableViewDataSource {
         cell.textLabel?.text = answers?[indexPath.row]
         
         //нижний текст.
-        let isCorrect = currentQuestion?.isCorrectAnswer(answers?[indexPath.row]) ?? false
+        let isCorrect = isAsnwerAtIndexIsCorrect(indexPath)
         
         cell.detailTextLabel?.text = isCorrect ? "Это правильный ответ" : "Не угадал(а)"
         
         return cell
     }
+    
+    func isAsnwerAtIndexIsCorrect(index:NSIndexPath)->Bool
+    {
+        return currentQuestion?.isCorrectAnswer(answers?[index.row]) ?? false
+    }
 }
 
+extension QuiestionViewController : UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if isAsnwerAtIndexIsCorrect(indexPath){
+            totalPoints += 1
+        }
+        
+        currentQuestionIndex += 1
+        guard currentQuestionIndex < questionList?.count else {
+            print("Конец всему и даже викторине!")
+            return
+        }
+        
+        currentQuestion = questionList?[currentQuestionIndex]
+    }
+    
+}
 
 
 
