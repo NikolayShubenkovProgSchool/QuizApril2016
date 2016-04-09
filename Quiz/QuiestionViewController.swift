@@ -44,6 +44,13 @@ class QuiestionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        currentQuestionIndex = 0
+        totalPoints = 0
+        currentQuestion = questionList?.first
+    }
+    
     func loadData(){
         
         let fileName = "cinema"
