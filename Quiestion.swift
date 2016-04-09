@@ -18,12 +18,19 @@ struct Question {
         return UIImage(named: imageName)
     }
     
-    
     init(json:[String:AnyObject]) {
         
         question = json["question"] as! String
         answers  = json["answers"]  as! [String]
         correctAnswer = json["correctAnswer"] as! String
         imageName = json["image"] as! String
+    }
+    
+    func isCorrectAnswer(answer:String?)->Bool {
+        guard answer != nil else {
+            return false
+        }
+        
+        return correctAnswer == answer
     }
 }

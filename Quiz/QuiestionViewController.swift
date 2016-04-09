@@ -24,11 +24,16 @@ class QuiestionViewController: UIViewController {
             updateViews()
         }
     }
+    var answers:[String]? {
+        return currentQuestion?.answers
+    }
     
     //вызывается в момент, когда контроллер загрузил View. В этот момент лучше всего
     //начать загрузку данных для отображения
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        
         loadData()
         // Do any additional setup after loading the view.
     }
@@ -72,16 +77,58 @@ class QuiestionViewController: UIViewController {
     }
     
     func updateViews(){
+        //настроили изображение
         let image = currentQuestion?.image
         imageView.image = image
         
+        //задали вопрос
         label.text = currentQuestion?.question
         
-        
-        
+        //перезаполнить tableView
+        tableView.reloadData()
+    }
+}
+
+extension QuiestionViewController:UITableViewDataSource {
+    //answers
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return answers?.count ?? 0
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")!
+        
+        cell.textLabel?.text = answers?[indexPath.row]
+        
+        //нижний текст.
+        let isCorrect = currentQuestion?.isCorrectAnswer(answers?[indexPath.row]) ?? false
+        
+        cell.detailTextLabel?.text = isCorrect ? "Это правильный ответ" : "Не угадал(а)"
+        
+        return cell
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
