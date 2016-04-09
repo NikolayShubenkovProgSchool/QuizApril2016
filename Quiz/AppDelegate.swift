@@ -6,6 +6,9 @@
 //  Copyright © 2016 Nikolay Shubenkov. All rights reserved.
 //
 
+//Wi-Fi
+//1...9
+
 import UIKit
 
 @UIApplicationMain
