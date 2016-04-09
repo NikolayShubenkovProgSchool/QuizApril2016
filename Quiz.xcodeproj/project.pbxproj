@@ -16,6 +16,7 @@
 		4F8630421CB8FB6500AB892A /* cinema.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F8630401CB8FB6500AB892A /* cinema.json */; };
 		4F8630451CB8FDE100AB892A /* QuiestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8630441CB8FDE100AB892A /* QuiestionViewController.swift */; };
 		4F8630481CB9051A00AB892A /* Quiestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8630471CB9051A00AB892A /* Quiestion.swift */; };
+		4F86304A1CB9397C00AB892A /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8630491CB9397C00AB892A /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4F8630401CB8FB6500AB892A /* cinema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cinema.json; sourceTree = "<group>"; };
 		4F8630441CB8FDE100AB892A /* QuiestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuiestionViewController.swift; sourceTree = "<group>"; };
 		4F8630471CB9051A00AB892A /* Quiestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiestion.swift; sourceTree = "<group>"; };
+		4F8630491CB9397C00AB892A /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				4F8630431CB8FB7900AB892A /* Data */,
 				4F86302B1CB8E22700AB892A /* AppDelegate.swift */,
 				4F86302F1CB8E22700AB892A /* Main.storyboard */,
+				4F8630491CB9397C00AB892A /* ResultViewController.swift */,
 				4F8630461CB8FDF500AB892A /* ViewControllers */,
 				4F8630321CB8E22700AB892A /* Assets.xcassets */,
 				4F8630341CB8E22700AB892A /* LaunchScreen.storyboard */,
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F86304A1CB9397C00AB892A /* ResultViewController.swift in Sources */,
 				4F8630451CB8FDE100AB892A /* QuiestionViewController.swift in Sources */,
 				4F86303E1CB8E8EB00AB892A /* MyFirstTableViewController.swift in Sources */,
 				4F86302C1CB8E22700AB892A /* AppDelegate.swift in Sources */,

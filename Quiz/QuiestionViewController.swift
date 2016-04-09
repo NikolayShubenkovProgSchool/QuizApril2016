@@ -93,6 +93,21 @@ class QuiestionViewController: UIViewController {
         //перезаполнить tableView
         tableView.reloadData()
     }
+    
+//    перед тем, как перейти на новый экран вызывается данный метод, где мы можем узнать 
+//    куда именно идет переход, есть ли что-то внутри sender и т.д.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let newVC = segue.destinationViewController as? ResultViewController {
+            newVC.result = sender as! Int
+        }
+        
+//        if segue.identifier == "ShowResult" {
+//            let newVC = segue.destinationViewController as! ResultViewController
+//            newVC.result = sender as! Int
+//        }
+        
+    }
 }
 
 extension QuiestionViewController:UITableViewDataSource {
@@ -131,8 +146,18 @@ extension QuiestionViewController : UITableViewDelegate {
         }
         
         currentQuestionIndex += 1
+        
         guard currentQuestionIndex < questionList?.count else {
             print("Конец всему и даже викторине!")
+            
+            //0 do 1
+            let rating = Double(totalPoints) / Double(questionList!.count)
+            
+            let convertedRating = Int(rating * 100)
+            
+            //выполнить переход на другой вьюконтроллер
+            performSegueWithIdentifier("ShowResult", sender: convertedRating)
+            
             return
         }
         
