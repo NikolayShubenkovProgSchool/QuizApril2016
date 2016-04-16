@@ -11,6 +11,8 @@ import UIKit
 class QuiestionViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
@@ -138,15 +140,37 @@ class QuiestionViewController: UIViewController {
     }
     
     func updateViews(){
-        //настроили изображение
-        let image = currentQuestion?.image
-        imageView.image = image
-        
+        updateImage()
         //задали вопрос
         label.text = currentQuestion?.question
         
         //перезаполнить tableView
         tableView.reloadData()
+    }
+    
+    func updateImage(){
+        //1.уменьшим высоту картинки до нуля
+        UIView.animateWithDuration(0.5, animations: {
+            self.imageHeightConstraint.constant = 0
+            self.view.layoutIfNeeded()
+            
+            }) { _ in
+                
+                //2.заменим изобаржение
+                let image = self.currentQuestion?.image
+                self.imageView.image = image
+                
+                
+                //3.растянем картинку обратно с помощью новой анимации
+                UIView.animateWithDuration(0.5, animations: {
+                    self.imageHeightConstraint.constant = 180
+                    self.view.layoutIfNeeded()
+
+                    }, completion: nil)
+        }
+        
+        
+        
     }
     
     //MARK: -

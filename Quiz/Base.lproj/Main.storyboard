@@ -182,14 +182,17 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="firstsQuestion" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-N1-ALT">
                                 <rect key="frame" x="20" y="64" width="560" height="238"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="238" id="OcR-Dg-wTD"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWm-4x-Xua">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWm-4x-Xua">
                                 <rect key="frame" x="20" y="322" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-DY-WLb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oZt-DY-WLb">
                                 <rect key="frame" x="20" y="363" width="560" height="237"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -239,6 +242,7 @@
                         <barButtonItem key="backBarButtonItem" title="Специфично" id="Eui-JL-RZL"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageHeightConstraint" destination="OcR-Dg-wTD" id="3n6-h2-IZK"/>
                         <outlet property="imageView" destination="zOe-N1-ALT" id="twk-za-cc8"/>
                         <outlet property="label" destination="cWm-4x-Xua" id="gqh-K8-czE"/>
                         <outlet property="tableView" destination="oZt-DY-WLb" id="ekN-9f-zUt"/>
