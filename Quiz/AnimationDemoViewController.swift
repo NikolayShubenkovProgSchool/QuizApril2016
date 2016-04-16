@@ -79,6 +79,9 @@ class AnimationDemoViewController: UIViewController {
                                            options: [.Repeat,.Autoreverse], animations: {
                                             self.watchInCinemaCenterX.constant = 15
                                             self.watchLaterLabel.textColor = UIColor.greenColor()
+                                            self.watchLaterLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI) / CGFloat(180) * CGFloat(20))
+                                            
+                                            
                                             self.view.layoutIfNeeded()
                     }, completion: nil)
         }
