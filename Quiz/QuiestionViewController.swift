@@ -141,11 +141,34 @@ class QuiestionViewController: UIViewController {
     
     func updateViews(){
         updateImage()
-        //задали вопрос
-        label.text = currentQuestion?.question
-        
+        updateLabel()
         //перезаполнить tableView
         tableView.reloadData()
+    }
+    
+    func updateLabel() {
+        
+        UIView.animateWithDuration(0.4, delay: 0,
+                                      options: [.CurveEaseIn],
+                                      animations: {
+                                    self.label.transform = CGAffineTransformMakeTranslation(self.view.frame.width, 0)
+            }) { (_) in
+                
+                self.label.text = self.currentQuestion?.question
+                
+                self.label.transform = CGAffineTransformMakeTranslation(-self.view.frame.width, 0)
+                
+                UIView.animateWithDuration(0.4,
+                                           delay: 0,
+                                           options: [.CurveEaseOut],
+                                           animations: { 
+                                            self.label.transform = CGAffineTransformIdentity
+                    }, completion: nil)
+                
+        }
+        
+        //задали вопрос
+        
     }
     
     func updateImage(){
@@ -174,9 +197,6 @@ class QuiestionViewController: UIViewController {
                                            completion: nil)
                 
         }
-        
-        
-        
     }
     
     //MARK: -
