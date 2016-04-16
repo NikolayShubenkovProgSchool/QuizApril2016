@@ -10,6 +10,8 @@ import UIKit
 
 class AnimationDemoViewController: UIViewController {
 
+    @IBOutlet weak var watchInCinemaCenterX: NSLayoutConstraint!
+    @IBOutlet weak var watchLaterLabel: UILabel!
     @IBOutlet weak var astalavistaCenterX: NSLayoutConstraint!
     @IBOutlet weak var vandamToGreetingSpace: NSLayoutConstraint!
     @IBOutlet weak var firstYellowView: UIView!
@@ -43,6 +45,7 @@ class AnimationDemoViewController: UIViewController {
         firstYellowView.backgroundColor = UIColor.greenColor()
         vandamToGreetingSpace.constant  = -40
         astalavistaCenterX.constant     = view.bounds.width
+        watchInCinemaCenterX.constant   = view.bounds.width
     }
     
     func animateAppearing(){
@@ -56,6 +59,30 @@ class AnimationDemoViewController: UIViewController {
             //То обязательно после их изменения вызовите этот метод
             self.view.layoutIfNeeded()
         }
+        
+//        UIViewAnimationOptions.CurveEaseInOut  --  плавно начать и плавно закончить
+//        UIViewAnimationOptions.CurveEaseIn --  начинается плавно, но быстро заканчивается
+        
+        
+        UIView.animateWithDuration(0.3,
+                                   delay: 0,
+                                   options: UIViewAnimationOptions.CurveEaseIn,
+                                   animations: { 
+                                    self.watchInCinemaCenterX.constant = -10
+                                    self.view.layoutIfNeeded()
+        }) { a in
+//            этот параметр, который передается в конце анимации 
+//            означает завершилась ли вызывающая анимация или нет.
+//                по завершении этого блока анимации будет вызвана другая анимация
+                UIView.animateWithDuration(0.5,
+                                           delay: 0,
+                                           options: [.Repeat,.Autoreverse], animations: {
+                                            self.watchInCinemaCenterX.constant = 15
+                                            self.watchLaterLabel.textColor = UIColor.greenColor()
+                                            self.view.layoutIfNeeded()
+                    }, completion: nil)
+        }
+        
     }
 
 }

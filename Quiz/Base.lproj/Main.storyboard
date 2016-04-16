@@ -40,11 +40,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Смотрите во всех кинотеатрах" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn1-Nz-Me4">
+                                <rect key="frame" x="176" y="411" width="248" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cJn-rA-o8V" firstAttribute="top" secondItem="NdS-TP-z9d" secondAttribute="bottom" constant="49" id="B14-tl-jz8"/>
                             <constraint firstItem="NdS-TP-z9d" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="Kff-q7-5q5"/>
+                            <constraint firstItem="Gn1-Nz-Me4" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="LV9-1G-PZS" userLabel="WatchInCinemaCenterX"/>
+                            <constraint firstItem="Gn1-Nz-Me4" firstAttribute="top" secondItem="NdS-TP-z9d" secondAttribute="bottom" constant="78" id="Nee-XO-ZR0"/>
                             <constraint firstItem="cJn-rA-o8V" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="Tlh-PN-WbI" userLabel="Astalavista CenterX"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eFT-sH-wcY" secondAttribute="leading" id="fdT-Ev-rpk"/>
                             <constraint firstItem="tAC-h1-FiP" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="fyg-2z-0Ge"/>
@@ -59,6 +67,8 @@
                         <outlet property="firstYellowView" destination="eFT-sH-wcY" id="2L1-He-iKx"/>
                         <outlet property="vandamToGreetingSpace" destination="gh5-V3-oB6" id="USl-sW-dda"/>
                         <outlet property="vandamView" destination="NdS-TP-z9d" id="xst-aM-tqi"/>
+                        <outlet property="watchInCinemaCenterX" destination="LV9-1G-PZS" id="SZh-Ju-NVp"/>
+                        <outlet property="watchLaterLabel" destination="Gn1-Nz-Me4" id="Cya-ZC-74n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d7S-nn-co5" userLabel="First Responder" sceneMemberID="firstResponder"/>
