@@ -10,6 +10,8 @@ import UIKit
 
 class AnimationDemoViewController: UIViewController {
 
+    @IBOutlet weak var astalavistaCenterX: NSLayoutConstraint!
+    @IBOutlet weak var vandamToGreetingSpace: NSLayoutConstraint!
     @IBOutlet weak var firstYellowView: UIView!
     
     @IBOutlet weak var vandamView: UIImageView!
@@ -39,12 +41,20 @@ class AnimationDemoViewController: UIViewController {
     func prepareForAnimation(){
         vandamView.alpha = 0
         firstYellowView.backgroundColor = UIColor.greenColor()
+        vandamToGreetingSpace.constant  = -40
+        astalavistaCenterX.constant     = view.bounds.width
     }
     
     func animateAppearing(){
         UIView.animateWithDuration(0.3) { 
             self.vandamView.alpha = 1
             self.firstYellowView.backgroundColor = UIColor.yellowColor()
+            self.vandamToGreetingSpace.constant  = 20
+            self.astalavistaCenterX.constant     = 0
+            
+            //Если вы меняете какие-либо Constrints
+            //То обязательно после их изменения вызовите этот метод
+            self.view.layoutIfNeeded()
         }
     }
 

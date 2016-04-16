@@ -28,18 +28,36 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fourthQuestion1" translatesAutoresizingMaskIntoConstraints="NO" id="NdS-TP-z9d">
                                 <rect key="frame" x="236" y="236" width="129" height="97"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текст приветствия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-h1-FiP">
+                                <rect key="frame" x="226" y="346" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Astalavista Babe!!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJn-rA-o8V">
+                                <rect key="frame" x="225" y="382" width="151" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cJn-rA-o8V" firstAttribute="top" secondItem="NdS-TP-z9d" secondAttribute="bottom" constant="49" id="B14-tl-jz8"/>
                             <constraint firstItem="NdS-TP-z9d" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="Kff-q7-5q5"/>
+                            <constraint firstItem="cJn-rA-o8V" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="Tlh-PN-WbI" userLabel="Astalavista CenterX"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eFT-sH-wcY" secondAttribute="leading" id="fdT-Ev-rpk"/>
+                            <constraint firstItem="tAC-h1-FiP" firstAttribute="centerX" secondItem="eS7-hI-Syu" secondAttribute="centerX" id="fyg-2z-0Ge"/>
+                            <constraint firstItem="tAC-h1-FiP" firstAttribute="top" secondItem="NdS-TP-z9d" secondAttribute="bottom" constant="13" id="gh5-V3-oB6" userLabel="Приветствие под вандамом"/>
                             <constraint firstItem="eFT-sH-wcY" firstAttribute="top" secondItem="ge0-u4-jjM" secondAttribute="bottom" constant="36" id="xAz-6b-qgk"/>
                             <constraint firstItem="NdS-TP-z9d" firstAttribute="top" secondItem="eFT-sH-wcY" secondAttribute="bottom" constant="8" id="yf8-7a-QqV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Анимация" id="A0T-Ao-DZY"/>
                     <connections>
+                        <outlet property="astalavistaCenterX" destination="Tlh-PN-WbI" id="w2W-e1-DcR"/>
                         <outlet property="firstYellowView" destination="eFT-sH-wcY" id="2L1-He-iKx"/>
+                        <outlet property="vandamToGreetingSpace" destination="gh5-V3-oB6" id="USl-sW-dda"/>
                         <outlet property="vandamView" destination="NdS-TP-z9d" id="xst-aM-tqi"/>
                     </connections>
                 </viewController>
