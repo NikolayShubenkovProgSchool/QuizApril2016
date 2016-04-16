@@ -162,11 +162,17 @@ class QuiestionViewController: UIViewController {
                 
                 
                 //3.растянем картинку обратно с помощью новой анимации
-                UIView.animateWithDuration(0.5, animations: {
-                    self.imageHeightConstraint.constant = 180
-                    self.view.layoutIfNeeded()
-
-                    }, completion: nil)
+                UIView.animateWithDuration(2,
+                                           delay: 0,
+                                           usingSpringWithDamping: 0.3,//0 - очень сильно колбасит струну. 1 - без колебаний
+                                           initialSpringVelocity: 7,//относительная начальная скорость изменения параметров
+                                           options: [],
+                                           animations: { 
+                                            self.imageHeightConstraint.constant = 180
+                                            self.view.layoutIfNeeded()
+                    },
+                                           completion: nil)
+                
         }
         
         
