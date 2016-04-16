@@ -30,10 +30,35 @@ class QuiestionViewController: UIViewController {
     var totalPoints = 0
     var currentQuestionIndex = 0
     
-    //вызывается в момент, когда контроллер загрузил View. В этот момент лучше всего
-    //начать загрузку данных для отображения
+    
+    //MARK: - View Controller Life Cycle -
+    
+//    Инициализация вызывается при инициализации из Storyboard
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+//  2. Загрузка View.
+//    Если вы хотите создать все view из кода,
+//  то в нем вы их создаете, как-то друг на друга накидываете,
+//  и настраиваете
+//  Если ViewController был описан через StoryBorad, то этот
+//  переопределять не нужно.
+//    override func loadView() {
+//        
+//    }
+    
+    
+//   3. Вызывается в момент, когда все Views вашего контроллера
+//   уже загружены
+//   В этот момент вью контроллер еще не присутствует на экране
+//   Это отличное место для инициализации данных, запуска каких-то длительных процессов
+//   В этот момент ваши Views еще не приняли конечных положений
+//   Этот метод вызывается один раз за время работы вашего контроллера
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("ViewDidLoad() - вызывается в момент, когда контроллер загрузил View. В этот момент лучше всего начать загрузку данных для отображения. ")
         //отвечает за то, как и что показывать
         tableView.dataSource = self
         
@@ -49,7 +74,34 @@ class QuiestionViewController: UIViewController {
         currentQuestionIndex = 0
         totalPoints = 0
         currentQuestion = questionList?.first
+        print(" - viewWillAppear Вызывается перед самым появлением на экране устройства. Может вызываться несколько раз за время жизни вашего контроллера")
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        print(" - viewDidAppear. Отличное место для того, чтобы запустить анимацию. ")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("- viewWillDisappear. Ваш контроллер начинает исчезать с экрана")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("- viewDidDisappear. Контроллер полностью исчез с экрана")
+    }
+    
+    deinit {
+        print(" - deinit. Сейчас на Земле станет на один ViewController меньше ((")
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        print(" - didReceiveMemoryWarning Паника-паника. У устройства кончается память. Нужно срочно избавить от всех неиспользуемых ресурсов")
+    }
+    
+    //MARK: - Setup
     
     func loadData(){
         
@@ -63,12 +115,9 @@ class QuiestionViewController: UIViewController {
         //кроме того, что они там лежат ничего не известно.
         let data = NSData(contentsOfFile: pathToVictorineFile)!
         
-        print(data)
-        
         // ! означает, что я гарантирую, что данные получится преобразовать
         let json = try! NSJSONSerialization.JSONObjectWithData(data, options: [])
         
-        print("содержимое викторины:\(json)")
 
         //попробуем представить json как коллекцию вида Строка -> любой объект
         guard let questionJSON = json as? [String:AnyObject],
@@ -85,7 +134,6 @@ class QuiestionViewController: UIViewController {
             return parsedModel
         }
         
-        print("Похоже, что мы смогли получить модель!!! ИХААА!!\n\(questionModels)")
         questionList = questionModels
     }
     
@@ -100,6 +148,8 @@ class QuiestionViewController: UIViewController {
         //перезаполнить tableView
         tableView.reloadData()
     }
+    
+    //MARK: -
     
 //    перед тем, как перейти на новый экран вызывается данный метод, где мы можем узнать 
 //    куда именно идет переход, есть ли что-то внутри sender и т.д.
@@ -116,6 +166,8 @@ class QuiestionViewController: UIViewController {
         
     }
 }
+
+//MARK: - UITableViewDataSource
 
 extension QuiestionViewController:UITableViewDataSource {
     //answers
@@ -143,6 +195,8 @@ extension QuiestionViewController:UITableViewDataSource {
         return currentQuestion?.isCorrectAnswer(answers?[index.row]) ?? false
     }
 }
+
+//MARK: - UITableViewDelegate
 
 extension QuiestionViewController : UITableViewDelegate {
     
